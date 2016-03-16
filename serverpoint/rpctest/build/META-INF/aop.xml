@@ -1,0 +1,13 @@
+<!DOCTYPE aspectj PUBLIC "-//AspectJ//DTD//EN" "http://www.aspectj.org/dtd/aspectj_1_5_0.dtd">
+
+<aspectj>
+    <weaver options="">
+        <!-- <include within="*.*"/> -->
+		<include within="com.mkyong.endpoint..*"/>
+		<include within="com.mkyong.ws..*"/>
+    </weaver>
+    
+    <aspects>
+      <aspect name="kieker.monitoring.probe.aspectj.operationExecution.OperationExecutionAspectFull"/>
+    </aspects>
+</aspectj>
