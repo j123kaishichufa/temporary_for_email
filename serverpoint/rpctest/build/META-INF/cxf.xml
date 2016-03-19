@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cxf="http://cxf.apache.org/core"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
+ 
+    <bean id="OperationExecutionSOAPRequestInInterceptor" class="kieker.monitoring.probe.cxf.OperationExecutionSOAPRequestInInterceptor"/>
+    <bean id="OperationExecutionSOAPRequestOutInterceptor"  class="kieker.monitoring.probe.cxf.OperationExecutionSOAPRequestOutInterceptor"/>
+    <bean id="OperationExecutionSOAPResponseInInterceptor" class="kieker.monitoring.probe.cxf.OperationExecutionSOAPResponseInInterceptor"/>
+    <bean id="OperationExecutionSOAPResponseOutInterceptor" class="kieker.monitoring.probe.cxf.OperationExecutionSOAPResponseOutInterceptor"/>
+
+    <cxf:bus>
+        <cxf:features>
+            <cxf:logging/>
+        </cxf:features>
+
+        <cxf:inInterceptors>
+            <ref bean="OperationExecutionSOAPRequestInInterceptor"/>
+            <ref bean="OperationExecutionSOAPResponseInInterceptor"/>
+        </cxf:inInterceptors>
+        <cxf:outInterceptors>
+            <ref bean="OperationExecutionSOAPRequestOutInterceptor"/>
+            <ref bean="OperationExecutionSOAPResponseOutInterceptor"/>
+        </cxf:outInterceptors>
+    </cxf:bus>
+</beans>
